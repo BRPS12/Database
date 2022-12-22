@@ -6,6 +6,7 @@ export const getAllusers = async (req, res) => {
     data: users,
   });
 };
+
 export const createUsers = async (req, res) => {
   const user = await User.create(req.body);
   if (!user) throw new Error("Haraaal oidsn error", 400);

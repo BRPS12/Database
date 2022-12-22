@@ -1,15 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import { port, MONGO_URI } from "./config.js";
+import postsRouter from "./router/post.js";
 import usersRouter from "./router/user.js";
 const app = express();
 app.use(express.json());
 app.use("/users", usersRouter);
-app.get("/", (req, res) => {
-  res.send({
-    data: "a",
-  });
-});
+app.use("/posts", postsRouter);
 const connect = () => {
   try {
     mongoose.set("strictQuery", true);
