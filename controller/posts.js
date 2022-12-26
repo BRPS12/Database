@@ -18,6 +18,7 @@ export const createPosts = async (req, res) => {
   try {
     const post = await Post.create(req.body);
     res.status(200).send({
+      success: true,
       data: post,
     });
   } catch (error) {
@@ -33,6 +34,7 @@ export const deletePosts = async (req, res) => {
     const id = req.params.id;
     const post = await Post.deleteOne({ _id: id });
     res.status(200).send({
+      success: true,
       data: post,
     });
   } catch (error) {
