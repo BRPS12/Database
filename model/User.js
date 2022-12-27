@@ -5,7 +5,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  lastname: String,
+  lastname: {
+    type: String,
+    required: true,
+  },
   age: Number,
   hobbies: Array,
   image: String,

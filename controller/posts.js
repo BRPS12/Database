@@ -29,6 +29,22 @@ export const createPosts = async (req, res) => {
   }
 };
 
+export const getPostsByID = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await Post.findById(id);
+    res.status(200).send({
+      success: true,
+      data: post,
+    });
+  } catch (error) {
+    res.status(400).send({
+      success: false,
+      data: error.message,
+    });
+  }
+};
+
 export const deletePosts = async (req, res) => {
   try {
     const id = req.params.id;
