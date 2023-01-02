@@ -1,27 +1,17 @@
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  desc: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
+  desc: String,
+
   bgimage: {
     type: String,
-    required: true,
+    required: [true, "Zurag hii!"],
   },
-  likes: String,
+
+  likes: {
+    type: String,
+    required: [true, "Like husehgu bgamu"],
+  },
 });
 
 const Post = mongoose.model("Post", PostSchema);

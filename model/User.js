@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema({
   firstname: {
     type: String,
-    required: true,
+    required: [true, "Firstname bich!"],
+    minlenght: [1, "Zuv2"],
+    maxlenght: [44, "Arail urt"],
   },
   lastname: {
     type: String,
@@ -12,6 +14,13 @@ const UserSchema = new mongoose.Schema({
   age: Number,
   hobbies: Array,
   image: String,
+  gender: {
+    type: String,
+    enum: {
+      values: ["Male", "Female", "Undefined"],
+      message: "Not supported",
+    },
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
