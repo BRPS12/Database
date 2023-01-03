@@ -12,7 +12,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   age: Number,
-  hobbies: Array,
   image: String,
   gender: {
     type: String,
@@ -22,6 +21,12 @@ const UserSchema = new mongoose.Schema({
     },
   },
 });
+UserSchema.path("firstname").validate((firstname) => {
+  return !/[0-9]/.test(firstname);
+}, "Neren dund too orj bolku");
 
+// PostSchema.path("email").validate((email) => {
+//   return email.toLowerCase().match(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/);
+// });
 const User = mongoose.model("User", UserSchema);
 export default User;
