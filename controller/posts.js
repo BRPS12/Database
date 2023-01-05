@@ -1,4 +1,19 @@
 import Post from "../model/Post.js";
+
+export const updatePost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findByIdAndUpdate({ _id: id }, req.body);
+    res.status(200).send({
+      success: true,
+      Post: post,
+    });
+  } catch (error) {
+    res.status(400).send({
+      data: error.message,
+    });
+  }
+};
 export const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find({});

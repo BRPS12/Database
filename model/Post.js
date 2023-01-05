@@ -13,14 +13,15 @@ const PostSchema = new mongoose.Schema({
     required: [true, "Like husehgu bgamu"],
   },
   image: String,
-  name: {
+  firstname: {
     type: String,
     required: [true, "Ner hel"],
-    minlength: [5, "Baga bn"],
+    minlength: [1, "Baga bn"],
   },
+  lastname: String,
 });
-PostSchema.path("name").validate((name) => {
-  return !/[0-9]/.test(name);
+PostSchema.path("firstname").validate((firstname) => {
+  return !/[0-9]/.test(firstname);
 });
 
 const Post = mongoose.model("Post", PostSchema);
